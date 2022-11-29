@@ -1,0 +1,6 @@
+Raw'line'a devam et, rawline'den gelen sonuç \n'den arındırılmamış bir değer olsun, bu değeri de başka bir fonksiyonda arındır ve 
+yine o fonksiyonda diğer kısmı da ekrana yazdır, sonra kaldığın yerden read ile okumaya tekrar et.
+
+strchr fonksiyonu doğru çalışıyor mu kontrol et.
+
+.h fosyana fonksiyonları eklemeyi unutma.

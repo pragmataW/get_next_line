@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:34:02 by yciftci           #+#    #+#             */
-/*   Updated: 2022/11/29 16:37:07 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/11/30 20:02:04 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strlen(char *str)
 	return (counter);
 }
 
-char	*ft_strjoin(char *src, char *dest)
+char	*ft_strjoin(char *dest, char *src)
 {
 	char	*res;
 	int		i;
@@ -31,13 +31,12 @@ char	*ft_strjoin(char *src, char *dest)
 	i = 0;
 	j = 0;
 	res = (char *)malloc((ft_strlen(src) + ft_strlen(dest) + 1) * sizeof(char));
-	while (src[i] != '\0')
-		res[j++] = src[i++];
-	i = 0;
 	while (dest[i] != '\0')
 		res[j++] = dest[i++];
+	i = 0;
+	while (src[i] != '\0')
+		res[j++] = src[i++];
 	res[j] = '\0';
-	free(src);
 	return (res);
 }
 

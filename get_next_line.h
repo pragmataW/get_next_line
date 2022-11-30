@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:35:54 by yciftci           #+#    #+#             */
-/*   Updated: 2022/11/29 13:34:44 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/11/30 19:52:22 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@
 # include <stdio.h>
 # include <string.h>
 
+int		ft_strlen(char *str);
+char	*ft_strjoin(char *dest, char *src);
+char	*ft_strchr(char *str);
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *src, char *dest);
+char	*get_raw_line(int fd, char *raw_str);
 
 #endif

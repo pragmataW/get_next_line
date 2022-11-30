@@ -1,6 +1,6 @@
 Raw'line'a devam et, rawline'den gelen sonuç \n'den arındırılmamış bir değer olsun, bu değeri de başka bir fonksiyonda arındır ve 
-yine o fonksiyonda diğer kısmı da ekrana yazdır, sonra kaldığın yerden read ile okumaya tekrar et.
+yine o \n'den sonra artan kısmı bellekte bir dizide tut (örneğin raw_line'da). sonra kaldığın yerden read ile okumaya tekrar et.zaten strjoin ile ekleme yapacağız
 
 strchr fonksiyonu doğru çalışıyor mu kontrol et.
 
-.h fosyana fonksiyonları eklemeyi unutma.
+bellek sızıntılarını kontrol et

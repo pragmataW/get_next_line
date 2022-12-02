@@ -1,2 +1,1 @@
-refinedstr fonksiyonu tersten yazsın, en son elemanları null ve \n olsun. ilk elemanı ise \n sonrası bellekte tutulan kelimelerim
-olsun Bunu ilk gönderişinde yapmasın, son gönderişinde de sonsuz döngüye girmesin
+son satırı okurken yazdırmıyor, sonsuz döngüye giriyor. Bunu düzelt.

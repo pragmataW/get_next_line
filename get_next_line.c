@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:38:29 by yciftci           #+#    #+#             */
-/*   Updated: 2022/12/02 05:41:53 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/02 11:48:59 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,44 +54,43 @@ char	*get_after_newline(char *raw_str)
 
 char	*refined_str(char *raw_str, int i)
 {
-	char	*refined_str;
-	int		after_len;
-	char	*tmp_raw;
+	char	*refined_string;
 
-	tmp_raw = get_after_newline(raw_str);
-	after_len = count_after_len(raw_str);
-	refined_str = (char *)malloc(newline_counter(raw_str) * sizeof(char) + 2);
-	while (raw_str[i] != '\n' && raw_str[i] != '\0')
+	refined_string = malloc(newline_counter(raw_str) + 2);
+	while (raw_str[i] != '\n')
 	{
-		refined_str[i] = raw_str[i];
+		refined_string[i] = raw_str[i];
 		i++;
-	}
-	refined_str[i++] = '\n';
-	refined_str[i] = '\0';
-	if (raw_str)
-		free(raw_str);
-	raw_str = malloc(sizeof(char) * after_len + 1);
+	}	
+	refined_string[i] = '\n';
+	refined_string[++i] = '\0';
 	i = 0;
-	while (tmp_raw[i] != '\0')
-	{
-		raw_str[i] = tmp_raw[i];
-		i++;
-	}
-	raw_str[i] = '\0';
-	return (refined_str);
+	return (refined_string);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*raw_str;
 	char		*refined_string;
-	char		*deneme;
+	char		*tmp;
+	int			i;
 
+	i = 0;
 	refined_string = NULL;
 	if (fd < 0 && BUFFER_SIZE <= 0)
 		return (0);
 	raw_str = get_raw_line(fd);
+	tmp = get_after_newline(raw_str);
 	refined_string = refined_str(raw_str, 0);
+	if (raw_str)
+		free(raw_str);
+	raw_str = malloc((ft_strlen(tmp) + 1) * sizeof(char));
+	while (tmp[i] != '\0')
+	{
+		raw_str[i] = tmp[i];
+		i++;
+	}
+	free(tmp);
 	return (refined_string);
 }
 
@@ -99,7 +98,7 @@ int	main(void)
 {
 	//char	*deneme = "yusuf\nselama";
 	//printf("%s", refined_str(deneme));
-	
+
 	int fd = open("mahmut.txt", O_RDONLY);
 	
 	printf("%s",get_next_line(fd));
@@ -107,5 +106,4 @@ int	main(void)
 	printf("%s",get_next_line(fd));
 	printf("%s",get_next_line(fd));
 	printf("%s",get_next_line(fd));
-
 }

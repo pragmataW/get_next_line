@@ -6,13 +6,15 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:35:54 by yciftci           #+#    #+#             */
-/*   Updated: 2022/12/02 05:43:09 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/02 17:37:41 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE 4
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 31
+# endif
 
 # include <fcntl.h>
 # include <unistd.h>

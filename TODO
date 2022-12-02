@@ -4,3 +4,6 @@ yine o \n'den sonra artan kısmı bellekte bir dizide tut (örneğin raw_line'da
 strchr fonksiyonu doğru çalışıyor mu kontrol et.
 
 bellek sızıntılarını kontrol et
+
+
+refined strde free kullan

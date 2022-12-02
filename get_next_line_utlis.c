@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:34:02 by yciftci           #+#    #+#             */
-/*   Updated: 2022/11/30 20:02:04 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/01 23:41:44 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ int	ft_strlen(char *str)
 
 	counter = 0;
 	while (str[counter] != '\0')
+		counter++;
+	return (counter);
+}
+
+int	newline_counter(char *raw_str)
+{
+	int	counter;
+
+	counter = 0;
+	while (raw_str[counter] != '\n' && raw_str[counter] != '\0')
 		counter++;
 	return (counter);
 }
@@ -37,10 +47,11 @@ char	*ft_strjoin(char *dest, char *src)
 	while (src[i] != '\0')
 		res[j++] = src[i++];
 	res[j] = '\0';
+	free (dest);
 	return (res);
 }
 
-char	*ft_strchr(char *str)
+int	iscontain(char *str)
 {
 	int	i;
 
@@ -48,6 +59,21 @@ char	*ft_strchr(char *str)
 	while (str[i] != '\n' && str[i] != '\0')
 		i++;
 	if (str[i] == '\n')
-		return (&str[i]);
+		return (1);
 	return (0);
+}
+
+int	count_after_len(char *raw_str)
+{
+	int	after_len;
+	int	i;
+
+	i = 0;
+	after_len = 0;
+	while (raw_str[i] != '\n')
+		i++;
+	i++;
+	while (raw_str[i++] != '\0')
+		after_len++;
+	return (after_len);
 }

@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:35:54 by yciftci           #+#    #+#             */
-/*   Updated: 2022/11/30 19:52:22 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/02 01:02:59 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,13 @@
 # include <string.h>
 
 int		ft_strlen(char *str);
+int		newline_counter(char *raw_str);
 char	*ft_strjoin(char *dest, char *src);
-char	*ft_strchr(char *str);
+int		iscontain(char *str);
+int		count_after_len(char *raw_str);
+char	*get_raw_line(int fd);
+char	*get_after_newline(char *raw_str);
+char	*refined_str(char *raw_str, int i);
 char	*get_next_line(int fd);
-char	*get_raw_line(int fd, char *raw_str);
 
 #endif

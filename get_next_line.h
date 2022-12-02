@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:35:54 by yciftci           #+#    #+#             */
-/*   Updated: 2022/12/02 01:02:59 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/02 05:43:09 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 int		ft_strlen(char *str);
 int		newline_counter(char *raw_str);
-char	*ft_strjoin(char *dest, char *src);
+char	*ft_strjoin(char *s1, char *s2);
 int		iscontain(char *str);
 int		count_after_len(char *raw_str);
 char	*get_raw_line(int fd);

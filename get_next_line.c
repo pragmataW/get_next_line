@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:38:29 by yciftci           #+#    #+#             */
-/*   Updated: 2022/12/02 01:41:35 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/02 05:41:53 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,13 @@ char	*refined_str(char *raw_str, int i)
 
 	tmp_raw = get_after_newline(raw_str);
 	after_len = count_after_len(raw_str);
-	refined_str = (char *)malloc(newline_counter(raw_str) * sizeof(char) + 1);
+	refined_str = (char *)malloc(newline_counter(raw_str) * sizeof(char) + 2);
 	while (raw_str[i] != '\n' && raw_str[i] != '\0')
 	{
 		refined_str[i] = raw_str[i];
 		i++;
 	}
+	refined_str[i++] = '\n';
 	refined_str[i] = '\0';
 	if (raw_str)
 		free(raw_str);
@@ -91,8 +92,7 @@ char	*get_next_line(int fd)
 		return (0);
 	raw_str = get_raw_line(fd);
 	refined_string = refined_str(raw_str, 0);
-	deneme = ft_strjoin(refined_string, raw_str);
-	//printf("%s", deneme);
+	return (refined_string);
 }
 
 int	main(void)
@@ -102,8 +102,10 @@ int	main(void)
 	
 	int fd = open("mahmut.txt", O_RDONLY);
 	
-	get_next_line(fd);
-	get_next_line(fd);
-	get_next_line(fd);
-	get_next_line(fd);
+	printf("%s",get_next_line(fd));
+	printf("%s",get_next_line(fd));
+	printf("%s",get_next_line(fd));
+	printf("%s",get_next_line(fd));
+	printf("%s",get_next_line(fd));
+
 }

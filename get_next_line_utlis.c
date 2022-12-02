@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:34:02 by yciftci           #+#    #+#             */
-/*   Updated: 2022/12/01 23:41:44 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/02 05:43:55 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,30 @@ int	newline_counter(char *raw_str)
 	return (counter);
 }
 
-char	*ft_strjoin(char *dest, char *src)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*res;
+	char	*result;
 	int		i;
 	int		j;
+	size_t	total_len;
 
+	if (!s1 || !s2)
+		return (NULL);
 	i = 0;
+	total_len = ft_strlen(s1) + ft_strlen(s2);
+	result = (char *)malloc((total_len * sizeof(char)) + 1);
+	if (result == NULL)
+		return (NULL);
+	while (s1[i] != '\0')
+	{
+		result[i] = ((unsigned char *)s1)[i];
+		i++;
+	}
 	j = 0;
-	res = (char *)malloc((ft_strlen(src) + ft_strlen(dest) + 1) * sizeof(char));
-	while (dest[i] != '\0')
-		res[j++] = dest[i++];
-	i = 0;
-	while (src[i] != '\0')
-		res[j++] = src[i++];
-	res[j] = '\0';
-	free (dest);
-	return (res);
+	while (s2[j] != '\0')
+		result[i++] = ((unsigned char *)s2)[j++];
+	result[i] = '\0';
+	return (result);
 }
 
 int	iscontain(char *str)

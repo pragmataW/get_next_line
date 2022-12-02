@@ -1,1 +1,1 @@
-son satırı okurken yazdırmıyor, sonsuz döngüye giriyor. Bunu düzelt.
+get after newline ilk döngüsü bytes 0 olduğunda durmalı, bunu get_raw_line içerisinden adres yoluyla al.

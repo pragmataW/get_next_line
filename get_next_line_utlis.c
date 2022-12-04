@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:34:02 by yciftci           #+#    #+#             */
-/*   Updated: 2022/12/02 05:43:55 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/04 19:39:20 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,21 @@ int	newline_counter(char *raw_str)
 	while (raw_str[counter] != '\n' && raw_str[counter] != '\0')
 		counter++;
 	return (counter);
+}
+
+int	count_after_nl(char *raw_str)
+{
+	int	after_len;
+	int	i;
+
+	i = 0;
+	after_len = 0;
+	while (raw_str[i] != '\n' && raw_str[i] != '\0')
+		i++;
+	i++;
+	while (raw_str[i] != '\0' && raw_str[i++] != '\n')
+		after_len++;
+	return (after_len);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -70,17 +85,3 @@ int	iscontain(char *str)
 	return (0);
 }
 
-int	count_after_len(char *raw_str)
-{
-	int	after_len;
-	int	i;
-
-	i = 0;
-	after_len = 0;
-	while (raw_str[i] != '\n')
-		i++;
-	i++;
-	while (raw_str[i++] != '\0')
-		after_len++;
-	return (after_len);
-}

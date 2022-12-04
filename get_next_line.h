@@ -6,14 +6,14 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:35:54 by yciftci           #+#    #+#             */
-/*   Updated: 2022/12/02 17:37:41 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/04 19:33:42 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 31
+#  define BUFFER_SIZE 4
 # endif
 
 # include <fcntl.h>
@@ -26,10 +26,6 @@ int		ft_strlen(char *str);
 int		newline_counter(char *raw_str);
 char	*ft_strjoin(char *s1, char *s2);
 int		iscontain(char *str);
-int		count_after_len(char *raw_str);
-char	*get_raw_line(int fd);
-char	*get_after_newline(char *raw_str);
-char	*refined_str(char *raw_str, int i);
-char	*get_next_line(int fd);
+int		count_after_nl(char *raw_str);
 
 #endif

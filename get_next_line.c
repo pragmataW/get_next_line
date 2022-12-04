@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:38:29 by yciftci           #+#    #+#             */
-/*   Updated: 2022/12/02 11:48:59 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/04 20:22:28 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,94 +16,84 @@ char	*get_raw_line(int fd)
 {
 	char	*buff;
 	char	*ret;
-
+	int		byte;
+	
+	byte = 1;
 	ret = malloc(sizeof(char));
-	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	while (!iscontain(buff))
+	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buff[BUFFER_SIZE] = '\0';
+	while (!iscontain(ret) &&  byte != 0)
 	{
-		read(fd, buff, BUFFER_SIZE);
+		byte = read(fd, buff, BUFFER_SIZE);
 		ret = ft_strjoin(ret, buff);
 	}
-	free (buff);
+	free(buff);
 	return (ret);
 }
 
-char	*get_after_newline(char *raw_str)
+char	*get_refined_str(char *raw_str)
 {
+	char	*ret;
+	int		after_newline;
 	int		i;
-	int		j;
-	int		after_len;
-	char	*tmp;
-
+	
 	i = 0;
-	j = 0;
-	after_len = count_after_len(raw_str);
-	tmp = (char *)malloc(sizeof(char) * (after_len + 1));
-	while (raw_str[i] != '\n')
-		i++;
-	i++;
-	while (raw_str[i] != '\0')
+	after_newline = newline_counter(raw_str);
+	ret = malloc(sizeof(char) * (after_newline + 1));
+	while(raw_str[i] != '\0' && raw_str[i] != '\n')
 	{
-		tmp[j] = raw_str[i];
+		ret[i] = raw_str[i];
 		i++;
-		j++;
 	}
-	tmp[j] = '\0';
-	return (tmp);
+	ret[i] = '\0';
+	return (ret);
 }
 
-char	*refined_str(char *raw_str, int i)
+char	*get_new_raw_str(char *raw_str, int i)
 {
-	char	*refined_string;
+	int		len;
+	char	*res;
 
-	refined_string = malloc(newline_counter(raw_str) + 2);
-	while (raw_str[i] != '\n')
-	{
-		refined_string[i] = raw_str[i];
+	while (raw_str[i] != '\n' && raw_str[i] != '\0')
 		i++;
-	}	
-	refined_string[i] = '\n';
-	refined_string[++i] = '\0';
-	i = 0;
-	return (refined_string);
+	i++;
+	len = ft_strlen(&raw_str[i]);
+	res = malloc(sizeof(char) * (len + 1));
+	res[len] = '\0';
+	len = 0;
+	while (raw_str[i] != '\0')
+	{
+		res[len] = raw_str[i];
+		len ++;
+		i++;
+	}
+	return (res);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*raw_str;
-	char		*refined_string;
-	char		*tmp;
-	int			i;
+	char		*refined_str;
 
-	i = 0;
-	refined_string = NULL;
-	if (fd < 0 && BUFFER_SIZE <= 0)
-		return (0);
 	raw_str = get_raw_line(fd);
-	tmp = get_after_newline(raw_str);
-	refined_string = refined_str(raw_str, 0);
-	if (raw_str)
-		free(raw_str);
-	raw_str = malloc((ft_strlen(tmp) + 1) * sizeof(char));
-	while (tmp[i] != '\0')
-	{
-		raw_str[i] = tmp[i];
-		i++;
-	}
-	free(tmp);
-	return (refined_string);
+	refined_str = get_refined_str(raw_str);
+	raw_str = get_new_raw_str(raw_str, 0);
+	return(refined_str);
 }
+
 
 int	main(void)
 {
-	//char	*deneme = "yusuf\nselama";
-	//printf("%s", refined_str(deneme));
-
 	int fd = open("mahmut.txt", O_RDONLY);
-	
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
+	// printf("%s",get_next_line(fd));
+	// printf("%s",get_next_line(fd));
+	// printf("%s",get_next_line(fd));
+	// printf("%s",get_next_line(fd));
+	// printf("%s",get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	printf("%s\n", get_next_line(fd));
+	//while (1);
 }

@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:38:29 by yciftci           #+#    #+#             */
-/*   Updated: 2022/12/04 20:22:28 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/04 21:01:42 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ char	*get_new_raw_str(char *raw_str, int i)
 
 	while (raw_str[i] != '\n' && raw_str[i] != '\0')
 		i++;
+	if (raw_str[i] =='\0')
+	{
+		free (raw_str);
+		raw_str = malloc(sizeof(char));
+		raw_str[0] = '\0';
+		return (raw_str);
+	}
 	i++;
 	len = ft_strlen(&raw_str[i]);
 	res = malloc(sizeof(char) * (len + 1));
@@ -90,9 +97,6 @@ int	main(void)
 	// printf("%s",get_next_line(fd));
 	// printf("%s",get_next_line(fd));
 	// printf("%s",get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
 	printf("%s\n", get_next_line(fd));
 	printf("%s\n", get_next_line(fd));
 	//while (1);

@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:38:29 by yciftci           #+#    #+#             */
-/*   Updated: 2022/12/05 16:12:04 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/05 22:30:18 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@ char	*get_raw_line(int fd, char *raw_str)
 	int		byte;
 
 	byte = 1;
-	if (!raw_str)
-		raw_str = malloc(sizeof(char));
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buff)
 		return (NULL);
-	while (!iscontain(raw_str) && byte != 0)
+	while (!ft_strchr(raw_str, '\n') && byte != 0)
 	{
 		byte = read(fd, buff, BUFFER_SIZE);
 		if (byte == -1)
@@ -44,12 +42,19 @@ char	*get_refined_str(char *raw_str)
 	int		after_newline;
 	int		i;
 
+	if (!raw_str || raw_str[0] == '\0')
+		return (NULL);
 	i = 0;
 	after_newline = newline_counter(raw_str);
-	ret = malloc(sizeof(char) * (after_newline + 1));
+	ret = malloc(sizeof(char) * (after_newline + 2));
 	if (!ret)
-		return (0);
+		return (NULL);
 	while (raw_str[i] != '\0' && raw_str[i] != '\n')
+	{
+		ret[i] = raw_str[i];
+		i++;
+	}
+	if (raw_str[i] == '\n')
 	{
 		ret[i] = raw_str[i];
 		i++;
@@ -58,30 +63,32 @@ char	*get_refined_str(char *raw_str)
 	return (ret);
 }
 
-char	*get_new_raw_str(char *raw_str)
+char	*get_new_raw_str(char *str)
 {
-	int		len;
-	char	*res;
 	int		i;
+	int		s;
+	char	*rest;
 
-	i = 0;
-	while (raw_str[i] != '\n' && raw_str[i] != '\0')
-		i++;
-	i++;
-	len = ft_strlen(&raw_str[i]);
-	res = malloc(sizeof(char) * (len + 1));
-	if (!res)
+	if (!str)
 		return (NULL);
-	res[len] = '\0';
-	len = 0;
-	while (raw_str[i] != '\0')
-	{
-		res[len] = raw_str[i];
-		len++;
+	i = 0;
+	while (str[i] != '\n' && str[i])
 		i++;
+	if (str[i] == '\0')
+	{
+		free(str);
+		return (NULL);
 	}
-	free(raw_str);
-	return (res);
+	rest = malloc(sizeof(char) * (ft_strlen(str) - i + 1));
+	if (!rest)
+		return (NULL);
+	i++;
+	s = 0;
+	while (str[i])
+		rest[s++] = str[i++];
+	rest[s] = '\0';
+	free(str);
+	return (rest);
 }
 
 char	*get_next_line(int fd)

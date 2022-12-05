@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:38:29 by yciftci           #+#    #+#             */
-/*   Updated: 2022/12/05 15:21:50 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/05 16:12:04 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,21 +98,3 @@ char	*get_next_line(int fd)
 	raw_str = get_new_raw_str(raw_str);
 	return (refined_str);
 }
-
-//int	main(void)
-//{
-//	int fd = open("mahmut.txt", O_RDONLY);
-//	// printf("%s",get_next_line(fd));
-//	// printf("%s",get_next_line(fd));
-//	// printf("%s",get_next_line(fd));
-//	// printf("%s",get_next_line(fd));
-//	// printf("%s",get_next_line(fd));
-//	//printf("%s\n", get_next_line(fd));
-//	//printf("%s\n", get_next_line(fd));
-//	printf("%s\n", get_next_line(fd));
-//	printf("\n-----------------------\n");
-//	printf("%s\n", get_next_line(fd));
-//	printf("\n-----------------------\n");
-//	printf("%s\n", get_next_line(fd));
-//	//while (1);
-//}

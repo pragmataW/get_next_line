@@ -1,1 +1,0 @@
-get after newline ilk döngüsü bytes 0 olduğunda durmalı, bunu get_raw_line içerisinden adres yoluyla al.

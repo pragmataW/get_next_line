@@ -6,7 +6,7 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:34:02 by yciftci           #+#    #+#             */
-/*   Updated: 2022/12/05 14:56:22 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/05 15:22:06 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,3 @@ int	iscontain(char *str)
 		return (1);
 	return (0);
 }
-

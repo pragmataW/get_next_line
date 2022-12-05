@@ -6,13 +6,13 @@
 /*   By: yciftci <yciftci@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 00:38:29 by yciftci           #+#    #+#             */
-/*   Updated: 2022/12/05 15:05:22 by yciftci          ###   ########.fr       */
+/*   Updated: 2022/12/05 15:21:50 by yciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*get_raw_line(int fd, char* raw_str)
+char	*get_raw_line(int fd, char *raw_str)
 {
 	char	*buff;
 	int		byte;
@@ -31,7 +31,7 @@ char	*get_raw_line(int fd, char* raw_str)
 			free(buff);
 			return (NULL);
 		}
-		buff[byte]='\0';
+		buff[byte] = '\0';
 		raw_str = ft_strjoin(raw_str, buff);
 	}
 	free(buff);
@@ -43,13 +43,13 @@ char	*get_refined_str(char *raw_str)
 	char	*ret;
 	int		after_newline;
 	int		i;
-	
+
 	i = 0;
 	after_newline = newline_counter(raw_str);
 	ret = malloc(sizeof(char) * (after_newline + 1));
 	if (!ret)
 		return (0);
-	while(raw_str[i] != '\0' && raw_str[i] != '\n')
+	while (raw_str[i] != '\0' && raw_str[i] != '\n')
 	{
 		ret[i] = raw_str[i];
 		i++;
@@ -96,24 +96,23 @@ char	*get_next_line(int fd)
 		return (NULL);
 	refined_str = get_refined_str(raw_str);
 	raw_str = get_new_raw_str(raw_str);
-	return(refined_str);
+	return (refined_str);
 }
 
-
-int	main(void)
-{
-	int fd = open("mahmut.txt", O_RDONLY);
-	// printf("%s",get_next_line(fd));
-	// printf("%s",get_next_line(fd));
-	// printf("%s",get_next_line(fd));
-	// printf("%s",get_next_line(fd));
-	// printf("%s",get_next_line(fd));
-	//printf("%s\n", get_next_line(fd));
-	//printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("\n-----------------------\n");
-	printf("%s\n", get_next_line(fd));
-	printf("\n-----------------------\n");
-	printf("%s\n", get_next_line(fd));
-	//while (1);
-}
+//int	main(void)
+//{
+//	int fd = open("mahmut.txt", O_RDONLY);
+//	// printf("%s",get_next_line(fd));
+//	// printf("%s",get_next_line(fd));
+//	// printf("%s",get_next_line(fd));
+//	// printf("%s",get_next_line(fd));
+//	// printf("%s",get_next_line(fd));
+//	//printf("%s\n", get_next_line(fd));
+//	//printf("%s\n", get_next_line(fd));
+//	printf("%s\n", get_next_line(fd));
+//	printf("\n-----------------------\n");
+//	printf("%s\n", get_next_line(fd));
+//	printf("\n-----------------------\n");
+//	printf("%s\n", get_next_line(fd));
+//	//while (1);
+//}
